@@ -1,6 +1,6 @@
 import ChatComponent from "@/components/ChatComponent";
 import ChatSideBar from "@/components/ChatSideBar";
-import PDFViewer from "@/components/PDFViewer";
+import PdfViewer from "@/components/PdfViewer";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
 import { checkSubscription } from "@/lib/subscription";
