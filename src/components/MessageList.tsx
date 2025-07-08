@@ -54,7 +54,7 @@ const MessageList = ({messages,isLoading}: Props) => {
                             'bg-blue-600 text-white':message.role==='user',
                         })
                     }>
-                        <p>{formatContent(message.content)}</p>
+                        {formatContent(message.content)}
                     </div>
                 </div>
             )

@@ -6,7 +6,6 @@ import React from 'react'
 import {useDropzone} from 'react-dropzone';
 import axios from 'axios'
 import toast from 'react-hot-toast';
-import { error } from 'console';
 import { useRouter } from 'next/navigation';
 
 const FileUpload = () => {
@@ -55,10 +54,20 @@ const FileUpload = () => {
 
                 console.log(data);
               },
-              onError:(err) => {
-                toast.error("Error creating chat")
-                console.log(err)
-              }
+              onError: (error: any) => {
+              console.error("Chat creation error:", {
+                status: error.response?.status,
+                data: error.response?.data,  // This will show server error details
+                message: error.message
+              });
+              
+              // Extract server error message
+              const serverError = error.response?.data?.error || 
+                                error.response?.data?.details || 
+                                "Unknown server error";
+              
+              toast.error(`Server error: ${serverError}`);
+            }
             })
             console.log("data",data)
         } catch (error) {
